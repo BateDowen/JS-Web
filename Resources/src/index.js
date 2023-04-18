@@ -1,11 +1,17 @@
 const express = require('express')
 const handlebars  = require("express-handlebars");
+const path = require('path');
 
 
 const app = express();
+app.engine('hbs', handlebars.engine({
+        extname: 'hbs'
+    }));
+app.set('view engine', 'hbs');
+app.set('views', path.resolve('./src/views'));
+
 app.all('/', (req,res) => {
-    res.write('Hello world');
-    res.end();
+    res.render('home')
 
 })
 app.listen(5000, ()=>{console.log('Server is listening on port 5000...')});
