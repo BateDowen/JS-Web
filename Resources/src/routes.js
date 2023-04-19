@@ -7,5 +7,5 @@ const router = express.Router();
 
 
 router.use(homeController)
-router.use('/cube',artController);
+router.use('/art',artController);
 module.exports = router;

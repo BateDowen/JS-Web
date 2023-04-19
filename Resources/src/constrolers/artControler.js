@@ -1,10 +1,23 @@
 const express = require('express');
 const router = express.Router();
+const artService = require('../services/createService');
 
-const createArt = (req,res) =>{
+
+const renderCreateArtPage = (req,res) =>{
+    let arts = artService.getAll();
+    console.log(arts);
     res.render('create');
 
 };
-router.get('/create',createArt);
+const createArt = (req,res) =>{
+
+    let {title, paintingTech, picture, certificate} = req.body;
+    artService.create(title, paintingTech, picture, certificate)
+    res.redirect('/art/create')
+};
+
+router.get('/create',renderCreateArtPage);
+router.post('/create',createArt);
+
 module.exports = router;
 
