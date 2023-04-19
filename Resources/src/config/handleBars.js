@@ -8,4 +8,4 @@ app.engine('hbs', handlebars.engine({
 app.set('view engine', 'hbs');
 app.set('views', path.resolve('./src/views'));
 };
-module.exports = initHandleBars
+module.exports = initHandleBars;
