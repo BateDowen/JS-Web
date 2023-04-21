@@ -1,3 +1,4 @@
+const x = require('uniqid');
 const Art = require('../../models/Art');
 
 const artDB = [
@@ -9,7 +10,8 @@ const artDB = [
         certificate: 'NoName'
       }
 ];
-const getAll = () => artDB.slice()
+const getAll = () => artDB.slice();
+const getOne = (id) => artDB.find((x) => x.id == id)
 const create = (title, paintingTech, picture, certificate) =>{
     let cube = new Art(title, paintingTech, picture, certificate);
 
@@ -17,7 +19,8 @@ const create = (title, paintingTech, picture, certificate) =>{
 };
 const artService = {
     create,
-    getAll
+    getAll,
+    getOne
 };
 module.exports = artService;
 
