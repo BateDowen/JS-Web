@@ -10,5 +10,8 @@ const router = express.Router();
 
 router.use(homeController)
 router.use('/art',artController);
-router.use(galleryControler)
+router.use(galleryControler);
+router.use('*', (req,res) =>{
+    res.render('404')
+})
 module.exports = router;
