@@ -13,7 +13,7 @@ const createArt = (req,res) =>{
 
     let {title, paintingTech, picture, certificate} = req.body;
     artService.create(title, paintingTech, picture, certificate)
-    res.redirect('/art/create')
+    res.redirect('/')
 };
 
 router.get('/create',renderCreateArtPage);
