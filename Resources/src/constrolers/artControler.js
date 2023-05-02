@@ -4,16 +4,21 @@ const artService = require('../services/createService');
 
 
 const renderCreateArtPage = (req,res) =>{
-    let arts = artService.getAll();
-    console.log(arts);
+    
     res.render('create');
 
 };
-const createArt = (req,res) =>{
+const createArt = async(req,res) =>{
 
     let {title, paintingTech, picture, certificate} = req.body;
-    artService.create(title, paintingTech, picture, certificate)
-    res.redirect('/')
+    try {
+       await artService.create(title, paintingTech, picture, certificate)
+        res.redirect('/')
+        
+    } catch (error) {
+        res.status(400).send(error.message).end();
+
+    }
 };
 
 router.get('/create',renderCreateArtPage);

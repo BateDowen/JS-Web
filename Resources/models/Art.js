@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const artSchema = new mongoose.Schema({
-    name: {
+    title: {
         type: String,
         required: true
     },
