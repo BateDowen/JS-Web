@@ -4,7 +4,7 @@ const artService = require('../services/createService');
 
 const gallery = (req,res) =>{
     let arts = artService.getAll();
-
+    // console.log(arts);
     res.render('gallery', { arts })
 
 };

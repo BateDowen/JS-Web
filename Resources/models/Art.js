@@ -1,13 +1,26 @@
-const uniqId = require('uniqid')
+const mongoose = require('mongoose');
 
-class Art {
-    constructor(title,painting,picture,certificate){
-        this.id = uniqId(),
-        this.title = title,
-        this.painting = painting,
-        this.picture = picture,
-        this.certificate = certificate
-    
+const artSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    paintingTech:{
+        type: String,
+        required: true,
+        maxlength: 100
+    },
+    picture: {
+        type: String,
+        required: true,
+        validate: /^https?:\/\//i
+    },
+    certificate:{
+        type: String,
+        required: true
     }
-};
+});
+
+const Art = mongoose.model('Art', artSchema);
+
 module.exports = Art;
